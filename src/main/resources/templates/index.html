@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+	<title>Google登录验证演示</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+<div style="float: right" th:fragment="logout" sec:authorize="isAuthenticated()">
+	<div style="float:left">
+		<span style="font-weight:bold">User Id: </span><span sec:authentication="name"></span>
+	</div>
+	<div style="float:none">&nbsp;</div>
+	<div style="float:right">
+		<form action="#" th:action="@{/logout}" method="post">
+			<input type="submit" value="退出" />
+		</form>
+	</div>
+</div>
+<h1>Google登录验证</h1>
+<div>
+	您已经成功登录： <span style="font-weight:bold" th:text="${userName}"></span>
+	 <span style="font-weight:bold" th:text="${clientName}"></span>
+</div>
+<div>&nbsp;</div>
+<div>
+	<a href="/userinfo" th:href="@{/userinfo}">显示用户信息</a>
+</div>
+</body>
+</html>
